@@ -1,6 +1,6 @@
 from manufactory import app, connection
 from flask import render_template, request
-from manufactory.queries import CREATE_TABLE, INSERT_PRODUCT, SELECT_FRUIT, SELECT_VEGETABLES
+from manufactory.queries import *
 import psycopg2.extras
 
 
@@ -28,6 +28,11 @@ def vegetables():
     return render_template('vegetables.html', food_kind=vegetables)
 
 
+@app.route("/inspirations")
+def inspirations():
+    return render_template('inspirations.html')
+
+
 @app.post("/add_product")
 def add_product():
     data = request.get_json()
@@ -35,10 +40,11 @@ def add_product():
     kcal = data["kcal"]
     ml = data["ml"]
     description = data["description"]
+    image = data["image"]
     is_fruit = data["is_fruit"]
     with connection:
         with connection.cursor() as cursor:
             cursor.execute(CREATE_TABLE)
-            cursor.execute(INSERT_PRODUCT, (name, kcal, ml, description, is_fruit))
+            cursor.execute(INSERT_PRODUCT, (name, kcal, ml, description, image, is_fruit))
 
     return {"message": f"Product was added"}, 201

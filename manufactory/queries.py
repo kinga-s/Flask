@@ -4,9 +4,10 @@ CREATE_TABLE = """CREATE TABLE IF NOT EXISTS products (
     kcal int,
     ml int,
     description text,
+    image varchar(255),
     is_fruit boolean);"""
 
-INSERT_PRODUCT = "INSERT INTO products (name, kcal, ml, description, is_fruit) VALUES (%s, %s, %s, %s, %s)"
+INSERT_PRODUCT = "INSERT INTO products (name, kcal, ml, description, image, is_fruit) VALUES (%s, %s, %s, %s, %s, %s)"
 
 SELECT_FRUIT = "SELECT * FROM products WHERE is_fruit = True"
 

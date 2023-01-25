@@ -4,11 +4,20 @@
 {% endblock %}
 
 {% block content %}
-    <main class="px-3">
-        <h1>Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Learn more</a>
-        </p>
+    <main>
+        <!-- Background image -->
+        <div
+          class="bg-image"
+          style="background-image: url({{ url_for('static', filename='images/juice3.jpg') }});
+            height: 100vh;"
+        >
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.6); height: 100vh;">
+            <div class="container d-flex flex-column justify-content-center align-items-center h-100" >
+                <h1 class="text-white mb-0">Fresh juice is a source <br/>of vitamins to make you feel better. Let's get started!</h1>
+                <a class="btn btn-outline-light btn-lg m-5" href="#" role="button" rel="nofollow" target="_self">Create your juice!</a>
+            </div>
+          </div>
+        </div>
+    <!-- Background image -->
     </main>
 {% endblock %}
